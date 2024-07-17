@@ -1,5 +1,5 @@
 {
-  description = "Plusmacs";
+  description = "Pankomacs";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     parts = {
