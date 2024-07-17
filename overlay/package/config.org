@@ -5,7 +5,7 @@
 [[./panko.gif][the fat fat panko cat]]
 
 * Emacs window stuff
-things like turning off the menubar, etc.
+Things like turning off the menubar, etc.
 #+BEGIN_SRC emacs-lisp
   (use-package emacs
     :config
@@ -20,7 +20,16 @@ things like turning off the menubar, etc.
 #+END_SRC
 
 * Theming
-using doom-themes here because tokyo night isn't on melpa
+** Nerd Fonts
+May or may not need nerd fonts for some of the below packages. 8)
+#+BEGIN_SRC emacs-lisp
+  (use-package nerd-icons
+    :custom
+    (nerd-icons-font-family "Symbols Nerd Font Mono"))
+#+END_SRC
+
+** Theme
+Using doom-themes here because Tokyo Night isn't on MELPA.
 #+BEGIN_SRC emacs-lisp
   (use-package doom-themes
     :config
@@ -35,7 +44,8 @@ using doom-themes here because tokyo night isn't on melpa
     (doom-themes-org-config))
 #+END_SRC
 
-also may or may not need doom modeline
+** Doom Modeline
+Also may not need doom modeline.
 #+BEGIN_SRC emacs-lisp
   (use-package doom-modeline
     :ensure t
@@ -44,7 +54,7 @@ also may or may not need doom modeline
 #+END_SRC
 
 * Vertico, Orderless, and more stuff
-personal favourite emacs completer
+Personal favourite emacs completer, and my computer can run it! 8)
 #+BEGIN_SRC emacs-lisp
       (use-package vertico
         :custom
@@ -233,13 +243,28 @@ personal favourite emacs completer
 * Setting up languages
 ** GENERAL LANGUAGES
 *** Flycheck
-I will of course need flycheck for syntax highlighting reasons!
+I will of course need flycheck for syntax checking stuff, also used for LSPS and whatnot.
 #+BEGIN_SRC emacs-lisp
   (use-package flycheck
     :ensure t
     :config
     (add-hook 'after-init-hook #'global-flycheck-mode))
   
+#+END_SRC
+*** LSP
+Enabling Emacs-LSP to use LSPs, I am very dry on syntax highlighters right now. :(
+#+BEGIN_SRC emacs-lisp
+  (use-package lsp-mode
+    :custom
+    (lsp-keymap-prefix "C-c l")
+    :hook (
+  	 (c++-mode . lsp)
+  	 (lsp-mode . lsp-enable-which-key-integration))
+    :commands lsp)
+
+  (use-package lsp-ui :commands lsp-ui-mode)
+  (use-package lsp-treemacs :commands lsp-treemacs-errors-list)
+  (use-package consult-lsp :commands consult-lsp-symbols)
 #+END_SRC
 ** SPECIFIC LANGUAGES
 *** Nix
@@ -248,4 +273,132 @@ I will of course need flycheck for syntax highlighting reasons!
     :mode "\\.nix\\'")
   
 #+END_SRC
+* Which-key
+Amazing tool, love it a bunch.
+#+BEGIN_SRC emacs-lisp
+  (use-package which-key
+    :config
+    (which-key-mode))
+#+END_SRC
+* Treemacs
+#+BEGIN_SRC emacs-lisp
 
+  (use-package all-the-icons
+    :if (display-graphic-p))
+    
+  (use-package treemacs
+    :ensure t
+    :defer t
+    :init
+    (with-eval-after-load 'winum
+      (define-key winum-keymap (kbd "M-0") #'treemacs-select-window))
+    :config
+    (progn
+      (setq treemacs-collapse-dirs                   (if treemacs-python-executable 3 0)
+            treemacs-deferred-git-apply-delay        0.5
+            treemacs-directory-name-transformer      #'identity
+            treemacs-display-in-side-window          t
+            treemacs-eldoc-display                   'simple
+            treemacs-file-event-delay                2000
+            treemacs-file-extension-regex            treemacs-last-period-regex-value
+            treemacs-file-follow-delay               0.2
+            treemacs-file-name-transformer           #'identity
+            treemacs-follow-after-init               t
+            treemacs-expand-after-init               t
+            treemacs-find-workspace-method           'find-for-file-or-pick-first
+            treemacs-git-command-pipe                ""
+            treemacs-goto-tag-strategy               'refetch-index
+            treemacs-header-scroll-indicators        '(nil . "^^^^^^")
+            treemacs-hide-dot-git-directory          t
+            treemacs-indentation                     2
+            treemacs-indentation-string              " "
+            treemacs-is-never-other-window           nil
+            treemacs-max-git-entries                 5000
+            treemacs-missing-project-action          'ask
+            treemacs-move-files-by-mouse-dragging    t
+            treemacs-move-forward-on-expand          nil
+            treemacs-no-png-images                   nil
+            treemacs-no-delete-other-windows         t
+            treemacs-project-follow-cleanup          nil
+            treemacs-persist-file                    (expand-file-name ".cache/treemacs-persist" user-emacs-directory)
+            treemacs-position                        'left
+            treemacs-read-string-input               'from-child-frame
+            treemacs-recenter-distance               0.1
+            treemacs-recenter-after-file-follow      nil
+            treemacs-recenter-after-tag-follow       nil
+            treemacs-recenter-after-project-jump     'always
+            treemacs-recenter-after-project-expand   'on-distance
+            treemacs-litter-directories              '("/node_modules" "/.venv" "/.cask")
+            treemacs-project-follow-into-home        nil
+            treemacs-show-cursor                     nil
+            treemacs-show-hidden-files               t
+            treemacs-silent-filewatch                nil
+            treemacs-silent-refresh                  nil
+            treemacs-sorting                         'alphabetic-asc
+            treemacs-select-when-already-in-treemacs 'move-back
+            treemacs-space-between-root-nodes        t
+            treemacs-tag-follow-cleanup              t
+            treemacs-tag-follow-delay                1.5
+            treemacs-text-scale                      nil
+            treemacs-user-mode-line-format           nil
+            treemacs-user-header-line-format         nil
+            treemacs-wide-toggle-width               70
+            treemacs-width                           35
+            treemacs-width-increment                 1
+            treemacs-width-is-initially-locked       t
+            treemacs-workspace-switch-cleanup        nil)
+
+      ;; The default width and height of the icons is 22 pixels. If you are
+      ;; using a Hi-DPI display, uncomment this to double the icon size.
+      ;;(treemacs-resize-icons 44)
+
+      (treemacs-follow-mode t)
+      (treemacs-filewatch-mode t)
+      (treemacs-fringe-indicator-mode 'always)
+      (when treemacs-python-executable
+        (treemacs-git-commit-diff-mode t))
+
+      (pcase (cons (not (null (executable-find "git")))
+                   (not (null treemacs-python-executable)))
+        (`(t . t)
+         (treemacs-git-mode 'deferred))
+        (`(t . _)
+         (treemacs-git-mode 'simple)))
+
+      (treemacs-hide-gitignored-files-mode nil))
+    :bind
+    (:map global-map
+          ("M-0"       . treemacs-select-window)
+          ("C-x t 1"   . treemacs-delete-other-windows)
+          ("C-x t t"   . treemacs)
+          ("C-x t d"   . treemacs-select-directory)
+          ("C-x t B"   . treemacs-bookmark)
+          ("C-x t C-t" . treemacs-find-file)
+          ("C-x t M-t" . treemacs-find-tag)))
+
+  (use-package treemacs-icons-dired
+    :hook (dired-mode . treemacs-icons-dired-enable-once)
+    :ensure t)
+
+  (use-package treemacs-nerd-icons
+    :config
+    (treemacs-load-theme "nerd-icons"))
+  
+  ; (use-package treemacs-evil
+  ;   :after (treemacs evil)
+  ;   :ensure t)
+  ; (use-package treemacs-projectile
+  ;   :after (treemacs projectile)
+  ;   :ensure t)
+  ; (use-package treemacs-magit
+  ;   :after (treemacs magit)
+  ;   :ensure t)
+  ; (use-package treemacs-persp ;;treemacs-perspective if you use perspective.el vs. persp-mode
+  ;   :after (treemacs persp-mode) ;;or perspective vs. persp-mode
+  ;   :ensure t
+  ;   :config (treemacs-set-scope-type 'Perspectives))
+  ; (use-package treemacs-tab-bar ;;treemacs-tab-bar if you use tab-bar-mode
+  ;   :after (treemacs)
+  ;   :ensure t
+  ;   :config (treemacs-set-scope-type 'Tabs))
+#+END_SRC

@@ -20,6 +20,16 @@ emacsWithPackagesFromUsePackage {
       doom-modeline
       nerd-icons
       flycheck
+      which-key
+      lsp-mode
+      lsp-ui
+      treemacs
+      lsp-treemacs
+      consult-lsp
+      treemacs-icons-dired
+      treemacs-nerd-icons
+      nerd-icons
+      all-the-icons
     ];
   override = _: prev: { use-package = prev.emacs; };
 }
