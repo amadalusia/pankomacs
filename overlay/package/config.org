@@ -1,8 +1,7 @@
+
 #+title: PANKOMACS
 #+author: Artur Manuel
 #+PROPERTY: header-args :tangle config.el
-
-[[./panko.gif][the fat fat panko cat]]
 
 * Emacs window stuff
 Things like turning off the menubar, etc.
@@ -387,9 +386,6 @@ Amazing tool, love it a bunch.
   ; (use-package treemacs-evil
   ;   :after (treemacs evil)
   ;   :ensure t)
-  ; (use-package treemacs-projectile
-  ;   :after (treemacs projectile)
-  ;   :ensure t)
   ; (use-package treemacs-magit
   ;   :after (treemacs magit)
   ;   :ensure t)
@@ -401,4 +397,19 @@ Amazing tool, love it a bunch.
   ;   :after (treemacs)
   ;   :ensure t
   ;   :config (treemacs-set-scope-type 'Tabs))
+#+END_SRC
+* Projectile
+This makes stuff a lot easier I hope.
+#+BEGIN_SRC emacs-lisp
+  (use-package projectile
+    :ensure t
+    :init
+    (projectile-mode +1)
+    :bind (:map projectile-mode-map
+		("s-p" . projectile-command-map)
+		("C-c p" . projectile-command-map)))
+  
+  (use-package treemacs-projectile
+    :after (treemacs projectile)
+    :ensure t)
 #+END_SRC

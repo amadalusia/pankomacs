@@ -30,6 +30,8 @@ emacsWithPackagesFromUsePackage {
       treemacs-nerd-icons
       nerd-icons
       all-the-icons
+      projectile
+      treemacs-projectile
     ];
   override = _: prev: { use-package = prev.emacs; };
 }
