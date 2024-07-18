@@ -1,4 +1,4 @@
-#+html: <img src="https://github.com/amadalusia/pankomacs/blob/main/media/panko.gif" align="right" width="10%">
+#+html: <img src="https://github.com/amadalusia/pankomacs/blob/main/media/panko.gif" align="right" width="5%">
 *** Pankomacs
 ****** opinionated opinionated emacs configuration (ft. flakes)
 -----
