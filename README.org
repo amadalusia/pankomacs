@@ -1,6 +1,6 @@
+#+html: <img src="https://github.com/amadalusia/pankomacs/blob/main/media/panko.gif" align="right" height="72px">
 *** Pankomacs
 ****** opinionated opinionated emacs configuration (ft. flakes)
-
 -----
 
 *** What is this configuration?
@@ -16,8 +16,3 @@ Other suggested named were "Plusmacs" based off of this discord conversation:
 
 #+html: <img src="https://github.com/amadalusia/pankomacs/blob/main/media/convo1.png" width="40%">
 #+html: <img src="https://github.com/amadalusia/pankomacs/blob/main/media/convo2.png" width="40%">
-
------
-
-*** pankos section
-#+html: <img src="https://github.com/amadalusia/pankomacs/blob/main/media/panko.gif">
