@@ -19,7 +19,7 @@
 
       flake = {
         overlays.default = final: _prev: {
-	  pankomacs = final.callPackage ./package { };
+	  pankomacs = final.callPackage ./package { pkgs = final; };
 	};
       };
 
