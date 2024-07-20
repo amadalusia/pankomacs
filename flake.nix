@@ -18,7 +18,9 @@
       ];
 
       flake = {
-        overlays.default = final: _prev: import ./overlay final;
+        overlays.default = final: _prev: {
+	  pankomacs = final.callPackage ./package { };
+	};
       };
 
       perSystem = { pkgs, self', config, system, ... }: {
