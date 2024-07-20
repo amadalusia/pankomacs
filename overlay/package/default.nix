@@ -32,6 +32,8 @@ emacsWithPackagesFromUsePackage {
       all-the-icons
       projectile
       treemacs-projectile
+      magit
+      treemacs-magit
     ];
   override = _: prev: { use-package = prev.emacs; };
 }

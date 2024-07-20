@@ -398,6 +398,15 @@ Amazing tool, love it a bunch.
   ;   :ensure t
   ;   :config (treemacs-set-scope-type 'Tabs))
 #+END_SRC
+* Magit
+Git in Emacs, it saves a fuck ton of time later down the road
+#+BEGIN_SRC emacs-lisp
+  (use-package magit
+    :ensure t
+    :bind (("C-x C-g" . magit-status)
+	   ("C-x g" . magit-status)))
+  
+#+END_SRC
 * Projectile
 This makes stuff a lot easier I hope.
 #+BEGIN_SRC emacs-lisp
@@ -408,8 +417,13 @@ This makes stuff a lot easier I hope.
     :bind (:map projectile-mode-map
 		("s-p" . projectile-command-map)
 		("C-c p" . projectile-command-map)))
-  
+
   (use-package treemacs-projectile
     :after (treemacs projectile)
     :ensure t)
+
+  (use-package treemacs-magit
+    :after (treemacs magit)
+    :ensure t)
+  
 #+END_SRC
