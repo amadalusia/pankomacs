@@ -18,7 +18,7 @@
       ];
 
       flake = {
-        overlays.default = final: _prev: import ./overlay final.pkgs;
+        overlays.default = final: _prev: import ./overlay final;
       };
 
       perSystem = { pkgs, self', config, system, ... }: {
