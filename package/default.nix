@@ -34,6 +34,7 @@ pkgs.emacsWithPackagesFromUsePackage {
       treemacs-projectile
       magit
       treemacs-magit
+      rustic
     ];
   override = _: prev: { use-package = prev.emacs; };
 }
