@@ -27,7 +27,7 @@
         _module.args.pkgs = import inputs.nixpkgs {
           inherit system;
           overlays = [
-            inputs.emacs.overlays.default
+            (import inputs.emacs)
             inputs.self.overlays.default
           ];
         };
