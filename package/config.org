@@ -274,10 +274,12 @@ Enabling Emacs-LSP to use LSPs, I am very dry on syntax highlighters right now. 
 #+END_SRC
 *** Rust
 #+BEGIN_SRC emacs-lisp
-  (use-package rustic
-    :mode "\\.rs\\'"
-    :hook (rust-mode . (lambda () (setq indent-tabs-mode nil))))
-    
+  (use-package rustic)
+#+END_SRC
+*** Haskell
+#+BEGIN_SRC emacs-lisp
+    (use-package haskell-mode
+      :mode "\\.hs\\'")
 #+END_SRC
 * Which-key
 Amazing tool, love it a bunch.

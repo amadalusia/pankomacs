@@ -35,6 +35,7 @@ pkgs.emacsWithPackagesFromUsePackage {
       magit
       treemacs-magit
       rustic
+      haskell-mode
     ];
   override = _: prev: { use-package = prev.emacs; };
 }
