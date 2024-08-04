@@ -9,7 +9,7 @@ pkgs.emacsWithPackagesFromUsePackage {
     e: with e; [
       treesit-grammars.with-all-grammars
       nix-ts-mode
-      doom-themes
+      base16-theme
       vertico
       orderless
       marginalia

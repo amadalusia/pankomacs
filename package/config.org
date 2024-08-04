@@ -30,17 +30,9 @@ May or may not need nerd fonts for some of the below packages. 8)
 ** Theme
 Using doom-themes here because Tokyo Night isn't on MELPA.
 #+BEGIN_SRC emacs-lisp
-  (use-package doom-themes
-    :config
-    (setq doom-themes-enable-bold t
-  	doom-themes-enable-italic t)
-    (load-theme 'doom-tokyo-night t)
-
-    (doom-themes-visual-bell-config)
-    (doom-themes-neotree-config)
-    (setq doom-themes-treemacs-theme "doom-tokyo-night")
-    (doom-themes-treemacs-config)
-    (doom-themes-org-config))
+  (use-package base16-theme
+    :config)
+    (load-theme 'base16-rose-pine t)
 #+END_SRC
 
 ** Doom Modeline
