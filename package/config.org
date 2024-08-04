@@ -281,6 +281,14 @@ Enabling Emacs-LSP to use LSPs, I am very dry on syntax highlighters right now. 
     (use-package haskell-mode
       :mode "\\.hs\\'")
 #+END_SRC
+*** Python
+#+BEGIN_SRC emacs-lisp
+  (use-package lsp-pyright
+  :ensure t
+  :hook (python-mode . (lambda ()
+			  (require 'lsp-pyright)
+			  (lsp)))) ; or lsp-deferred
+#+END_SRC
 * Which-key
 Amazing tool, love it a bunch.
 #+BEGIN_SRC emacs-lisp
@@ -435,4 +443,10 @@ This makes stuff a lot easier I hope.
     :after (treemacs magit)
     :ensure t)
   
+#+END_SRC
+* envrc
+Automatically sets up files so I can use an LSP and more.
+#+BEGIN_SRC emacs-lisp
+    (use-package envrc
+      :hook (after-init . envrc-global-mode))
 #+END_SRC

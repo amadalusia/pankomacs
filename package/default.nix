@@ -23,6 +23,7 @@ pkgs.emacsWithPackagesFromUsePackage {
       which-key
       lsp-mode
       lsp-ui
+      lsp-pyright
       treemacs
       lsp-treemacs
       consult-lsp
@@ -36,6 +37,7 @@ pkgs.emacsWithPackagesFromUsePackage {
       treemacs-magit
       rustic
       haskell-mode
+      envrc
     ];
   override = _: prev: { use-package = prev.emacs; };
 }
