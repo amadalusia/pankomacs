@@ -17,25 +17,18 @@
         "x86_64-linux"
       ];
 
-      flake = {
-        overlays.default = final: _prev: {
-	  pankomacs = final.callPackage ./package { pkgs = final; };
-	};
-      };
-
       perSystem = { pkgs, self', config, system, ... }: {
         _module.args.pkgs = import inputs.nixpkgs {
           inherit system;
           overlays = [
             (import inputs.emacs)
-            inputs.self.overlays.default
           ];
         };
-        packages.pankomacs = pkgs.pankomacs;
+        packages.pankomacs = pkgs.callPackage ./nix/package.nix;
         packages.default = self'.packages.pankomacs;
 
         apps.pankomacs.program = "${self'.packages.pankomacs}/bin/emacs";
-        apps.default = config.apps.pankomacs;
+        apps.default = self'.apps.pankomacs;
 
         formatter = pkgs.nixpkgs-fmt;
       };
